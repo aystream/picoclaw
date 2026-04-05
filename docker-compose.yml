@@ -1,0 +1,18 @@
+services:
+  picoclaw:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./workspace:/root/.picoclaw/workspace
+      - ~/.picoclaw/config.json:/root/.picoclaw/config.json
+    ports:
+      - "18790:18790"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:18790/health", "||", "exit", "1"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      start_period: 30s

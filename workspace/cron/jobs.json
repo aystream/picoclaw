@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "5f90734ef96ea780",
+      "name": "Weekly disk monitor report",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * 0"
+      },
+      "payload": {
+        "kind": "agent_turn",
+        "message": "Weekly disk monitor report",
+        "command": "bash /home/alex/picoclaw/workspace/scripts/disk_monitor.sh",
+        "channel": "telegram",
+        "to": "-1002482632737"
+      },
+      "state": {
+        "nextRunAtMs": 1775977200000
+      },
+      "createdAtMs": 1775418364958,
+      "updatedAtMs": 1775418365333,
+      "deleteAfterRun": false,
+      "expiresAtMs": 1806954365333
+    }
+  ]
+}
